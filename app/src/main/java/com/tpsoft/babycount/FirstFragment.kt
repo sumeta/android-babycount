@@ -1,10 +1,8 @@
 package com.tpsoft.babycount
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
@@ -23,6 +21,7 @@ class FirstFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -40,4 +39,23 @@ class FirstFragment : Fragment() {
             textViewCount.text = nCount.toString()
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.action_history -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                true
+            }
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
