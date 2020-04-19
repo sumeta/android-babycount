@@ -2,11 +2,16 @@ package com.tpsoft.babycount
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.tpsoft.babycount.data.HistoryDao
+import com.tpsoft.babycount.data.HistoryModel
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -36,6 +41,15 @@ class FirstFragment : Fragment() {
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
             nCount++
+            val dao = HistoryDao(activity)
+            var model = HistoryModel()
+            val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val date = Date()
+            val createDate = dateFormat.format(date)
+            model.count = nCount
+            model.createdDate = createDate
+
+            var res = dao.insert(model)
             textViewCount.text = nCount.toString()
         }
     }
