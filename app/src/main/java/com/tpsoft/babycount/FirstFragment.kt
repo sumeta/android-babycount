@@ -20,6 +20,7 @@ class FirstFragment : Fragment() {
 
     private var nCount:Int = 0
     private lateinit var textViewCount: TextView
+    private val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -34,23 +35,21 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         textViewCount = view.findViewById(R.id.textViewCount)
-
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        textViewCount.text = this.countList().toString()
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
             nCount++
             val dao = HistoryDao(activity)
             var model = HistoryModel()
-            val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a")
+
             val date = Date()
             val createDate = dateFormat.format(date)
             model.count = nCount
             model.createdDate = createDate
 
             var res = dao.insert(model)
-            textViewCount.text = nCount.toString()
+
+            textViewCount.text = countList().toString()
         }
     }
 
@@ -72,4 +71,10 @@ class FirstFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+
+    private fun countList() : Int{
+        val dao = HistoryDao(activity)
+        var his = dao.list
+        return his.size
+    }
 }
