@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.tpsoft.babycount.data.HistoryDao
+import com.tpsoft.babycount.data.HistoryModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -19,6 +21,13 @@ class SecondFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         activity?.title  = "History"
+
+        val dao = HistoryDao(activity)
+        var res = dao.list
+        for (r:HistoryModel in res){
+            print("-> ID " + r.id )
+            println(" Create " + r.createdDate)
+        }
 
         return inflater.inflate(R.layout.fragment_second, container, false)
     }

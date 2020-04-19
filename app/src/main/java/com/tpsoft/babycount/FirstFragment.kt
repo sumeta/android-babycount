@@ -43,7 +43,7 @@ class FirstFragment : Fragment() {
             nCount++
             val dao = HistoryDao(activity)
             var model = HistoryModel()
-            val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a")
             val date = Date()
             val createDate = dateFormat.format(date)
             model.count = nCount
