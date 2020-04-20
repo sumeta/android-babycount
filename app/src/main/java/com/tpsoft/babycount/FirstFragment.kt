@@ -160,7 +160,10 @@ class FirstFragment : Fragment() {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 true
             }
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_settingFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
         return super.onOptionsItemSelected(item)

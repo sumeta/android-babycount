@@ -34,11 +34,11 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        String DROP_FRIEND_TABLE = "DROP TABLE IF EXISTS history";
-
-        db.execSQL(DROP_FRIEND_TABLE);
-
-        onCreate(db);
+//        String DROP_FRIEND_TABLE = "DROP TABLE IF EXISTS history";
+//
+//        db.execSQL(DROP_FRIEND_TABLE);
+//
+//        onCreate(db);
 
     }
 
