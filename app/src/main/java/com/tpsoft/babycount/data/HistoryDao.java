@@ -36,7 +36,9 @@ public class HistoryDao extends DBHelper {
             Integer idKey = Integer.parseInt(cursor.getString(0));
             model.setId(idKey);
             model.setCount(cursor.getInt(1));
-            model.setCreatedDate(cursor.getString(2));
+            model.setType(cursor.getString(2));
+            model.setComment(cursor.getString(3));
+            model.setCreatedDate(cursor.getString(4));
             cursor.moveToNext();
         }
 
@@ -62,7 +64,9 @@ public class HistoryDao extends DBHelper {
             Integer idKey = Integer.parseInt(cursor.getString(0));
             model.setId(idKey);
             model.setCount(cursor.getInt(1));
-            model.setCreatedDate(cursor.getString(2));
+            model.setType(cursor.getString(2));
+            model.setComment(cursor.getString(3));
+            model.setCreatedDate(cursor.getString(4));
             models.add(model);
 
             cursor.moveToNext();
@@ -74,10 +78,42 @@ public class HistoryDao extends DBHelper {
         return models;
     }
 
+    public List<HistoryModel> getTodayList() {
+        List<HistoryModel> models = new ArrayList<>();
+
+        Cursor cursor = sqLiteDatabase.query
+                (HistoryModel.TABLE, null, null, null, null, null, "created_date DESC");
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        while (!cursor.isAfterLast()) {
+            HistoryModel model = new HistoryModel();
+            Integer idKey = Integer.parseInt(cursor.getString(0));
+            model.setId(idKey);
+            model.setCount(cursor.getInt(1));
+            model.setType(cursor.getString(2));
+            model.setComment(cursor.getString(3));
+            model.setCreatedDate(cursor.getString(4));
+            models.add(model);
+
+            cursor.moveToNext();
+        }
+
+        sqLiteDatabase.close();
+        cursor.close();
+
+        return models;
+    }
+
+
     public long insert(HistoryModel model) {
         //sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(HistoryModel.Column.COUNT, model.getCount());
+        values.put(HistoryModel.Column.TYPE, model.getType());
+        values.put(HistoryModel.Column.COMMENT, model.getComment());
         values.put(HistoryModel.Column.CREATED_DATE, model.getCreatedDate());
 
         long id = sqLiteDatabase.insert(HistoryModel.TABLE, null, values);
@@ -88,8 +124,10 @@ public class HistoryDao extends DBHelper {
     public boolean update(HistoryModel model){
         //sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(HistoryModel.Column.ID, model.getId());
+        //values.put(HistoryModel.Column.ID, model.getId());
         values.put(HistoryModel.Column.COUNT, model.getCount());
+        values.put(HistoryModel.Column.TYPE, model.getType());
+        values.put(HistoryModel.Column.COMMENT, model.getComment());
         //sqLiteDatabase.update(HistoryModel.TABLE,values, columnId+"="+model.getId(),null);
         sqLiteDatabase.update(HistoryModel.TABLE,values,
                 HistoryModel.Column.ID + " = ? ",

@@ -17,10 +17,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         System.out.println("on Create");
         String CREATE_HISTORY_TABLE = String.format("CREATE TABLE %s " +
-                        "(%s INTEGER PRIMARY KEY  AUTOINCREMENT, %s INTEGER, %s TEXT)",
+                        "(%s INTEGER PRIMARY KEY  AUTOINCREMENT, %s INTEGER, %s TEXT,%s TEXT,%s TEXT)",
                 HistoryModel.TABLE,
                 HistoryModel.Column.ID,
                 HistoryModel.Column.COUNT,
+                HistoryModel.Column.TYPE,
+                HistoryModel.Column.COMMENT,
                 HistoryModel.Column.CREATED_DATE);
 
         db.execSQL(CREATE_HISTORY_TABLE);

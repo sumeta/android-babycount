@@ -8,21 +8,21 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Today"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="25sp"
 
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="Today"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/style_cicle"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView3"
@@ -74,7 +74,7 @@
         android:layout_height="99dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/style_cicle"
@@ -83,9 +83,9 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="@id/layoutNoon"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/linearLayout">
+        app:layout_constraintTop_toTopOf="@+id/textView">
 
         <TextView
             android:layout_width="match_parent"
@@ -94,13 +94,13 @@
             android:text="เช้า" />
 
         <TextView
-            android:id="@+id/textViewCountMoning"
+            android:id="@+id/textViewCountMorning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/hello_first_fragment"
             android:textColor="@color/colorPrimary"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
 
     </LinearLayout>
 
@@ -110,7 +110,7 @@
         android:layout_height="99dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/style_cicle"
@@ -121,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="@id/layoutAfterNoon"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/layoutMoning"
-        app:layout_constraintTop_toTopOf="@id/linearLayout">
+        app:layout_constraintTop_toTopOf="@+id/textView">
 
         <TextView
             android:layout_width="match_parent"
@@ -136,7 +136,42 @@
             android:gravity="center"
             android:text="@string/hello_first_fragment"
             android:textColor="@color/colorPrimary"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAfterNoon"
+        android:layout_width="100dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/style_cicle"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutNoon"
+        app:layout_constraintTop_toTopOf="@+id/textView">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="บ่าย" />
+
+        <TextView
+            android:id="@+id/textViewCountAfterNoon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/hello_first_fragment"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40sp" />
 
     </LinearLayout>
 
@@ -153,41 +188,5 @@
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/layoutAfterNoon"
-        android:layout_width="100dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/style_cicle"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toEndOf="@+id/layoutNoon"
-        app:layout_constraintTop_toTopOf="@id/linearLayout">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="เที่ยง" />
-
-        <TextView
-            android:id="@+id/textViewCountAfterNoon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/hello_first_fragment"
-            android:textColor="@color/colorPrimary"
-            android:textSize="50sp" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
