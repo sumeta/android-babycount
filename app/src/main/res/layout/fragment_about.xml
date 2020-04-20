@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="แอฟนับการดิ้นของทารกในครรภ์"
+        android:text="แอพนับการดิ้นของทารกในครรภ์"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -28,9 +28,7 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="การดิ้นของลูกบ่งบอกถึงสุขภาพที่แข็งแรงของลูก
-        การที่ลูกดิ้นน้อยลงมักเกิดร่วมกับการขาดออกซิเจนเรื้อรังและอยู่ในภาวะที่อันตราย การนับลูกดิ้นจึงเป็นวิธีง่ายๆ
-        ที่คุณแม่สามารถใช้ในการดูแลสุขภาพของลูกน้อยในครรภ์ได้" />
+        android:text="การดิ้นของลูกบ่งบอกถึงสุขภาพที่แข็งแรงของลูก การที่ลูกดิ้นน้อยลงมักเกิดร่วมกับการขาดออกซิเจนเรื้อรังและอยู่ในภาวะที่อันตราย การนับลูกดิ้นจึงเป็นวิธีง่ายๆ ที่คุณแม่สามารถใช้ในการดูแลสุขภาพของลูกน้อยในครรภ์ได้"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -52,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="2. หลังจากนับครบ 1 ชั่วโมง
-        ถ้าทารกยังดิ้นไม่ถึง 4 ครั้ง กรุณานับทารกดิ้นต่อไปจนกว่าทารกจะดิ้นครบ 10 ครั้ง" />
+        android:text="2. หลังจากนับครบ 1 ชั่วโมง ถ้าทารกยังดิ้นไม่ถึง 4 ครั้ง กรุณานับทารกดิ้นต่อไปจนกว่าทารกจะดิ้นครบ 10 ครั้ง" />
 
 </LinearLayout>

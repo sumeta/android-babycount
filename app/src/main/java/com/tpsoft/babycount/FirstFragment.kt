@@ -189,7 +189,7 @@ class FirstFragment : Fragment() {
 
     private fun countListAll() : Int{
         val dao = HistoryDao(activity)
-        var his = dao.list
+        var his = dao.todayList
         return his.size
     }
 }
