@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -13,28 +14,30 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
 
-    private var nCount:Int = 0
     private var morningCount:Int = 0
     private var noonCount:Int = 0
     private var afterNoonCount:Int = 0
     private lateinit var textViewCount: TextView
+    private lateinit var layoutMorning: LinearLayout
     private lateinit var textViewMorning: TextView
+    private lateinit var layoutNoon: LinearLayout
     private lateinit var textViewNoon: TextView
+    private lateinit var layoutAfterNoon: LinearLayout
     private lateinit var textViewAfterNoon: TextView
     private val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         setHasOptionsMenu(true);
+        activity?.title = resources.getString(R.string.app_name);
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -42,8 +45,11 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         textViewCount = view.findViewById(R.id.textViewCountAll)
+        layoutMorning = view.findViewById(R.id.layoutMoning)
         textViewMorning = view.findViewById(R.id.textViewCountMorning)
+        layoutNoon = view.findViewById(R.id.layoutNoon)
         textViewNoon = view.findViewById(R.id.textViewCountNoon)
+        layoutAfterNoon = view.findViewById(R.id.layoutAfterNoon)
         textViewAfterNoon = view.findViewById(R.id.textViewCountAfterNoon)
 
         morningCount = getSection("M")
@@ -55,67 +61,91 @@ class FirstFragment : Fragment() {
         textViewNoon.text = noonCount.toString()
         textViewAfterNoon.text = afterNoonCount.toString()
 
-        view.findViewById<LinearLayout>(R.id.layoutMoning).setOnClickListener{
-            nCount++
+        layoutMorning.setOnClickListener{
             morningCount++
             var model = HistoryModel()
-            val date = Date()
-            val createDate = dateFormat.format(date)
-            model.count = nCount
+            model.count = morningCount
             model.type = "M"
-            model.createdDate = createDate
+            model.createdDate = getCurrentDate()
             val dao = HistoryDao(activity)
             dao.insert(model)
+            Toast.makeText(activity,"เพิ่มแล้ว",Toast.LENGTH_SHORT).show()
 
-            textViewMorning.text = morningCount.toString()
-            textViewCount.text = countListAll().toString()
+            textViewMorning.text = getSection("M").toString()
+            updateCountAll()
         }
 
-        view.findViewById<LinearLayout>(R.id.layoutNoon).setOnClickListener{
-            nCount++
+        layoutMorning.setOnLongClickListener {
+            val count = getSection("M")
+            if(count > 0){
+                morningCount++
+                val dao = HistoryDao(activity)
+                dao.deleteByLast("M")
+                Toast.makeText(activity,"ลบแล้ว",Toast.LENGTH_SHORT).show()
+                textViewMorning.text = getSection("M").toString()
+                updateCountAll()
+            }
+            true
+        }
+
+        layoutNoon.setOnClickListener{
             noonCount++
             var model = HistoryModel()
-            val date = Date()
-            val createDate = dateFormat.format(date)
-            model.count = nCount
+            model.count = noonCount
             model.type = "N"
-            model.createdDate = createDate
+            model.createdDate = getCurrentDate()
             val dao = HistoryDao(activity)
             dao.insert(model)
+            Toast.makeText(activity,"เพิ่มแล้ว",Toast.LENGTH_SHORT).show()
 
-            textViewNoon.text = noonCount.toString()
-            textViewCount.text = countListAll().toString()
+            textViewNoon.text = getSection("N").toString()
+            updateCountAll()
         }
 
-        view.findViewById<LinearLayout>(R.id.layoutAfterNoon).setOnClickListener{
-            nCount++
+        layoutNoon.setOnLongClickListener {
+            val count = getSection("N")
+            if(count > 0){
+                noonCount++
+                val dao = HistoryDao(activity)
+                dao.deleteByLast("N")
+                Toast.makeText(activity,"ลบแล้ว",Toast.LENGTH_SHORT).show()
+                textViewNoon.text = getSection("N").toString()
+                updateCountAll()
+            }
+            true
+        }
+
+        layoutAfterNoon.setOnClickListener{
             afterNoonCount++
             var model = HistoryModel()
-            val date = Date()
-            val createDate = dateFormat.format(date)
-            model.count = nCount
+            model.count = afterNoonCount
             model.type = "A"
-            model.createdDate = createDate
+            model.createdDate = getCurrentDate()
             val dao = HistoryDao(activity)
             dao.insert(model)
+            Toast.makeText(activity,"เพิ่มแล้ว",Toast.LENGTH_SHORT).show()
 
-            textViewAfterNoon.text = afterNoonCount.toString()
-            textViewCount.text = countListAll().toString()
+            textViewAfterNoon.text = getSection("A").toString()
+            updateCountAll()
+        }
+
+        layoutAfterNoon.setOnLongClickListener {
+            val count = getSection("A")
+            if(count > 0){
+                afterNoonCount++
+                val dao = HistoryDao(activity)
+                dao.deleteByLast("A")
+                Toast.makeText(activity,"ลบแล้ว",Toast.LENGTH_SHORT).show()
+                textViewAfterNoon.text = getSection("A").toString()
+                updateCountAll()
+            }
+            true
         }
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
-            nCount++
-            var model = HistoryModel()
-
-            val date = Date()
-            val createDate = dateFormat.format(date)
-            model.count = nCount
-            model.createdDate = createDate
-            val dao = HistoryDao(activity)
-            dao.insert(model)
-
-            textViewCount.text = countListAll().toString()
+            findNavController().navigate(R.id.action_firstFragment_to_abountFragment)
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -134,6 +164,15 @@ class FirstFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getCurrentDate():String{
+        val date = Date()
+        return dateFormat.format(date)
+    }
+
+    private fun updateCountAll(){
+        textViewCount.text = countListAll().toString()
     }
 
     private fun getSection(type:String): Int{

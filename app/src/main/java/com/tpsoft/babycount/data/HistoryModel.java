@@ -21,7 +21,6 @@ public class HistoryModel {
         public static final String CREATED_DATE = "created_date";
     }
 
-
     private int id;
     private int count;
     private String type;

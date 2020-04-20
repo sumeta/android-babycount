@@ -14,15 +14,22 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_abountFragment"
+            app:destination="@id/abountFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.tpsoft.babycount.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/abountFragment"
+        android:name="com.tpsoft.babycount.AboutFragment"
+        android:label="fragment_abount"
+        tools:layout="@layout/fragment_about" />
 </navigation>

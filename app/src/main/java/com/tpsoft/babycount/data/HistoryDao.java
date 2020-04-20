@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HistoryDao extends DBHelper {
@@ -51,7 +54,6 @@ public class HistoryDao extends DBHelper {
     public List<HistoryModel> getList() {
         //sqLiteDatabase = this.getWritableDatabase();
         List<HistoryModel> models = new ArrayList<>();
-
         Cursor cursor = sqLiteDatabase.query
                 (HistoryModel.TABLE, null, null, null, null, null, "created_date DESC");
 
@@ -81,8 +83,16 @@ public class HistoryDao extends DBHelper {
     public List<HistoryModel> getTodayList() {
         List<HistoryModel> models = new ArrayList<>();
 
+        //String whereClause =HistoryModel.Column.CREATED_DATE+" =?";
+        //String[] whereArgs = new String[]{id};
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String dateStr = dateFormat.format(date);
+        String whereClause  = "strftime('%Y-%m-%d',created_date) = ?";
+        String[] whereArgs = new String[]{dateStr};
         Cursor cursor = sqLiteDatabase.query
-                (HistoryModel.TABLE, null, null, null, null, null, "created_date DESC");
+                (HistoryModel.TABLE, null, whereClause, whereArgs, null, null, "created_date DESC");
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -138,15 +148,23 @@ public class HistoryDao extends DBHelper {
     }
 
     public boolean delete(String id) {
-        //sqLiteDatabase = this.getWritableDatabase();
         String sql = "DELETE FROM `history` WHERE " + BaseColumns._ID + " = " + id;
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.close();
         return true;
     }
 
+    public boolean deleteByLast(String type) {
+        String sql = "DELETE FROM history WHERE _id IN\n" +
+                " (SELECT _id FROM history\n" +
+                " WHERE type = '"+type+"'\n" +
+                " ORDER BY created_date DESC LIMIT 1)";
+        sqLiteDatabase.execSQL(sql);
+        sqLiteDatabase.close();
+        return true;
+    }
+
     public void clear() {
-        //sqLiteDatabase = this.getWritableDatabase();
         String sql = "DELETE FROM `history`";
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.close();

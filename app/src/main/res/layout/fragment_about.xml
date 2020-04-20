@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    tools:context=".AboutFragment"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="แอฟนับการดิ้นของทารกในครรภ์"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="ความสำคัญของการนับลูกดิ้น" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="การดิ้นของลูกบ่งบอกถึงสุขภาพที่แข็งแรงของลูก
+        การที่ลูกดิ้นน้อยลงมักเกิดร่วมกับการขาดออกซิเจนเรื้อรังและอยู่ในภาวะที่อันตราย การนับลูกดิ้นจึงเป็นวิธีง่ายๆ
+        ที่คุณแม่สามารถใช้ในการดูแลสุขภาพของลูกน้อยในครรภ์ได้" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="วิธีการนับ" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="1. ให้เริ่มนับหลังจากที่รับประทานอาหารอิ่มแล้ว นับไปจนครบ 1 ชั่วโมง" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="2. หลังจากนับครบ 1 ชั่วโมง
+        ถ้าทารกยังดิ้นไม่ถึง 4 ครั้ง กรุณานับทารกดิ้นต่อไปจนกว่าทารกจะดิ้นครบ 10 ครั้ง" />
+
+</LinearLayout>
