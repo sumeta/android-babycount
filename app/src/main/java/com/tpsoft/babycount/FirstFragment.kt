@@ -34,7 +34,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewCount = view.findViewById(R.id.textViewCount)
+        textViewCount = view.findViewById(R.id.textViewCountAll)
         textViewCount.text = this.countList().toString()
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
