@@ -72,18 +72,17 @@
         android:id="@+id/layoutMoning"
         android:layout_width="100dp"
         android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/style_cicle"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintEnd_toEndOf="@id/layoutNoon"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/layoutNoon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:layout_width="match_parent"
@@ -106,20 +105,15 @@
         android:id="@+id/layoutNoon"
         android:layout_width="100dp"
         android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/style_cicle"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintEnd_toEndOf="@id/layoutAfterNoon"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toEndOf="@+id/layoutMoning"
-        app:layout_constraintTop_toTopOf="@+id/textView">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:layout_width="match_parent"
@@ -142,9 +136,9 @@
         android:id="@+id/layoutAfterNoon"
         android:layout_width="100dp"
         android:layout_height="99dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/style_cicle"
         android:gravity="center"
         android:orientation="vertical"
@@ -152,7 +146,7 @@
         android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/layoutNoon"
-        app:layout_constraintTop_toTopOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:layout_width="match_parent"
@@ -180,9 +174,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="กด 1 ครั้งเพื่ม หรือกดค้างไว้เพื่อลบ"
-        android:textStyle="bold"
         android:gravity="center"
+        android:text="กด 1 ครั้งเพิ่ม หรือกดค้างไว้เพื่อลบ"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/layoutAfterNoon"
         app:layout_constraintTop_toBottomOf="@+id/layoutNoon" />
