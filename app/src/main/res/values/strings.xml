@@ -12,4 +12,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Noon">เที่ยง</string>
+    <string name="All">ทั้งหมด</string>
+    <string name="time">ครั้ง</string>
+    <string name="morning">เช้า</string>
+    <string name="afternoon">เย็น</string>
+    <string name="today">วันนี้</string>
+    <string name="onetimeorhold">กด 1 ครั้งเพิ่ม หรือกดค้างไว้เพื่อลบ</string>
 </resources>
