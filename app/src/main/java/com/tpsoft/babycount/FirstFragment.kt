@@ -156,6 +156,10 @@ class FirstFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
+            R.id.action_report -> {
+                findNavController().navigate(R.id.reportFragment)
+                true
+            }
             R.id.action_history -> {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 true
