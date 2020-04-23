@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tpsoft.babycount.data.HistoryDao
 import com.tpsoft.babycount.data.HistoryModel
 
-class SecondFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     private var historyList: ArrayList<HistoryModel> = ArrayList()
     private  var adapter:HistoryAdapter? = null
@@ -21,6 +21,8 @@ class SecondFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         activity?.title  = "History"
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         return inflater.inflate(R.layout.fragment_second, container, false)
     }

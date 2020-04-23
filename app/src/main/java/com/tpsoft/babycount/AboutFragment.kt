@@ -11,7 +11,7 @@ class AboutFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity!!.title = "About"
-
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
 

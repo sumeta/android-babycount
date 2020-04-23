@@ -38,6 +38,9 @@ class FirstFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true);
         activity?.title = resources.getString(R.string.app_name);
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        //(activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
+
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -143,7 +146,7 @@ class FirstFragment : Fragment() {
         }
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
-            findNavController().navigate(R.id.action_firstFragment_to_abountFragment)
+            findNavController().navigate(R.id.abountFragment)
         }
 
     }
@@ -161,11 +164,11 @@ class FirstFragment : Fragment() {
                 true
             }
             R.id.action_history -> {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                findNavController().navigate(R.id.SecondFragment)
                 true
             }
             R.id.action_settings -> {
-                findNavController().navigate(R.id.action_FirstFragment_to_settingFragment)
+                findNavController().navigate(R.id.settingFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

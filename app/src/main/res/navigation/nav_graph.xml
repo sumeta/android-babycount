@@ -9,27 +9,12 @@
         android:id="@+id/FirstFragment"
         android:name="com.tpsoft.babycount.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_firstFragment_to_abountFragment"
-            app:destination="@id/abountFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_first"/>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.tpsoft.babycount.SecondFragment"
+        android:name="com.tpsoft.babycount.HistoryFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_second"/>
     <fragment
         android:id="@+id/abountFragment"
         android:name="com.tpsoft.babycount.AboutFragment"
