@@ -4,6 +4,11 @@
     tools:context="com.tpsoft.babycount.MainActivity">
 
     <item
+        android:id="@+id/action_report"
+        android:orderInCategory="100"
+        android:title="Report"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_history"
         android:orderInCategory="100"
         android:title="History"
