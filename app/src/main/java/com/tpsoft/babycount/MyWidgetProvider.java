@@ -1,24 +1,18 @@
 package com.tpsoft.babycount;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 
 import com.tpsoft.babycount.data.HistoryDao;
 import com.tpsoft.babycount.data.HistoryModel;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,36 +20,43 @@ import java.util.List;
 
 public class MyWidgetProvider extends AppWidgetProvider{
 
-
-    private static final String ACTION_CLICK = "ACTION_CLICK";
-
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,
                          int[] appWidgetIds) {
-        // Get all ids
         ComponentName thisWidget = new ComponentName(context,
                 MyWidgetProvider.class);
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int widgetId : allWidgetIds) {
-            // create some random data
-            add(context);
-            int x = countListAll(context);
+            int count = countListAll(context);
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.widget_layout);
-            Log.w("WidgetExample", String.valueOf(x));
-            // Set the text
-            remoteViews.setTextViewText(R.id.update, String.valueOf(x));
-            // Register an onClickListener
+
+            remoteViews.setTextViewText(R.id.update, String.valueOf(count));
             Intent intent = new Intent(context, MyWidgetProvider.class);
 
-            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+//            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent.setAction("com.tpsoft.babycount.MyWidgetProvider");
+//            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
 
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             remoteViews.setOnClickPendingIntent(R.id.update, pendingIntent);
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
+        }
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (intent.getAction().equals("com.tpsoft.babycount.MyWidgetProvider")) {
+            add(context);
+            int countNum = countListAll(context);
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+                    R.layout.widget_layout);
+            remoteViews.setTextViewText(R.id.update, String.valueOf(countNum));
+            ComponentName componentName = new ComponentName(context, MyWidgetProvider.class);
+            AppWidgetManager.getInstance(context).updateAppWidget(componentName, remoteViews);
         }
     }
 
@@ -92,32 +93,16 @@ public class MyWidgetProvider extends AppWidgetProvider{
     }
 
     private String getType() {
-        String type = "";
-        try {
-            String noon = "12:00:00";
-            Date noonTime = new SimpleDateFormat("HH:mm:ss").parse(noon);
-            Calendar noonCalendar = Calendar.getInstance();
-            noonCalendar.setTime(noonTime);
-            noonCalendar.add(Calendar.DATE, 1);
-
-            String afternoon = "17:00:00";
-            Date afternoonTime = new SimpleDateFormat("HH:mm:ss").parse(afternoon);
-            Calendar afternoonCalendar = Calendar.getInstance();
-            afternoonCalendar.setTime(afternoonTime);
-            afternoonCalendar.add(Calendar.DATE, 1);
-
-            Date current = new Date();
-            if (current.after(afternoonCalendar.getTime())) {
-                type = "A";
-            }else if(current.after(noonCalendar.getTime())){
-                type = "N";
-            }else{
-                type = "M";
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        String type;
+        Calendar cal = Calendar.getInstance();
+        int currentHour = cal.get(Calendar.HOUR);
+        if(currentHour > 17){
+            type = "A";
+        }else if(currentHour > 12){
+            type = "N";
+        }else{
+            type = "M";
         }
-
         return type;
     }
 }

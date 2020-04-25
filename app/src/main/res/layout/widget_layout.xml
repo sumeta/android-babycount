@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dip"
     android:padding="5dp"
     android:orientation="horizontal"
@@ -24,8 +24,6 @@
         android:text="@string/app_name" >
     </TextView>
 
-
-
     <TextView
         android:id="@+id/update"
         style="@android:style/TextAppearance.Medium"
@@ -39,7 +37,5 @@
         android:textColor="@android:color/white"
         android:background="@drawable/style_widget_count"
         android:text="Count"/>
-
-
 
 </LinearLayout>
