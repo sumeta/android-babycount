@@ -118,6 +118,46 @@ public class HistoryDao extends DBHelper {
     }
 
 
+    public List<ReportModel> getReport() {
+        List<ReportModel> models = new ArrayList<>();
+
+        //String whereClause =HistoryModel.Column.CREATED_DATE+" =?";
+        //String[] whereArgs = new String[]{id};
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String dateStr = dateFormat.format(date);
+        String whereClause  = "strftime('%Y-%m-%d',created_date) = ?";
+        String[] whereArgs = new String[]{dateStr};
+        String sql = "select strftime('%Y-%m-%d',created_date) as date,\n" +
+                "SUM(CASE WHEN type='M' THEN 1 ELSE 0 END) as M,\n" +
+                "SUM(CASE WHEN type='N' THEN 1 ELSE 0 END) as N,\n" +
+                "SUM(CASE WHEN type='A' THEN 1 ELSE 0 END) as A\n" +
+                "from history \n" +
+                "GROUP By strftime('%Y-%m-%d',created_date) " +
+                "ORDER BY strftime('%Y-%m-%d',created_date) desc ";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql,null,null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        while (!cursor.isAfterLast()) {
+            ReportModel model = new ReportModel(cursor.getString(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3));
+
+            models.add(model);
+            cursor.moveToNext();
+        }
+
+        sqLiteDatabase.close();
+        cursor.close();
+
+        return models;
+    }
+
+
+
+
     public long insert(HistoryModel model) {
         //sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
