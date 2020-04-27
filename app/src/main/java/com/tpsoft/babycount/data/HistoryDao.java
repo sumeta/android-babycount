@@ -124,7 +124,7 @@ public class HistoryDao extends DBHelper {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String dateStr = dateFormat.format(date);
-        String sql = "SELECT strftime('%Y-%m-%d',created_date) AS date,\n" +
+        String sql = "SELECT strftime('%d-%m-%Y',created_date) AS date,\n" +
                 "SUM(CASE WHEN type='M' THEN 1 ELSE 0 END) as M,\n" +
                 "SUM(CASE WHEN type='N' THEN 1 ELSE 0 END) as N,\n" +
                 "SUM(CASE WHEN type='A' THEN 1 ELSE 0 END) as A\n" +

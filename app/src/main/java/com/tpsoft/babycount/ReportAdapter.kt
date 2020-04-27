@@ -35,12 +35,15 @@ class ReportAdapter(val context: Context?, private val items: MutableList<Report
         private val textViewMorning = view.textViewMorning
         private val textViewNoon = view.textViewNoon
         private val textViewAfterNoon = view.textViewAfterNoon
+        private val textViewSum = view.textViewSum
 
         fun bind(report: ReportModel) {
             textViewDate.text = "วันที่ "+report.date
             textViewMorning.text = report.morning.toString()
             textViewNoon.text = report.noon.toString()
             textViewAfterNoon.text = report.afternoon.toString()
+            textViewSum.text = (report.morning+report.noon+report.afternoon).toString()
+
         }
     }
 
