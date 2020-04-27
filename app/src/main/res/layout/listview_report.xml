@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ReportFragment"
     android:orientation="vertical"
     android:layout_margin="5dp"
-    android:padding="5dp">
+    android:padding="@dimen/layout_inside">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
+        android:padding="@dimen/layout_inside"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textViewDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date"
@@ -26,31 +26,50 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="5dp"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="เช้า"/>
 
             <TextView
                 android:id="@+id/textViewMorning"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Morning"/>
+                android:paddingLeft="@dimen/layout_inside"
+                android:text="0"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="เที่ยง"/>
             <TextView
                 android:id="@+id/textViewNoon"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:paddingLeft="@dimen/layout_inside"
+                android:text="0"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Noon"/>
+                android:paddingLeft="@dimen/layout_inside"
+                android:text="เย็น"/>
 
             <TextView
                 android:id="@+id/textViewAfterNoon"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="AfterNoon"/>
+                android:paddingLeft="@dimen/layout_inside"
+                android:text="0"/>
 
 
         </LinearLayout>
