@@ -95,7 +95,7 @@ public class MyWidgetProvider extends AppWidgetProvider{
     private String getType() {
         String type;
         Calendar cal = Calendar.getInstance();
-        int currentHour = cal.get(Calendar.HOUR);
+        int currentHour = cal.get(Calendar.HOUR_OF_DAY);
         if(currentHour > 17){
             type = "A";
         }else if(currentHour > 12){
