@@ -1,4 +1,4 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.os.Bundle
 import android.view.*
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.tpsoft.babycount.R
 import com.tpsoft.babycount.data.HistoryDao
 import com.tpsoft.babycount.data.HistoryModel
 import java.text.DateFormat

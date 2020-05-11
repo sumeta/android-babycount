@@ -1,4 +1,4 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tpsoft.babycount.R
 import com.tpsoft.babycount.data.HistoryDao
 
 class ReportFragment : Fragment() {
 
-    private  var adapter:ReportAdapter? = null
+    private  var adapter: ReportAdapter? = null
     private lateinit var recyclerView:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,7 @@ class ReportFragment : Fragment() {
 
         val dao = HistoryDao(activity)
         var reports = dao.report
-        adapter = ReportAdapter(context,reports)
+        adapter = ReportAdapter(context, reports)
         recyclerView.adapter = adapter
 
         adapter!!.notifyDataSetChanged()

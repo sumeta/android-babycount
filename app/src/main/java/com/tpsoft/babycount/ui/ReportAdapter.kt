@@ -1,15 +1,14 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tpsoft.babycount.R
 import com.tpsoft.babycount.data.ReportModel
-import kotlinx.android.synthetic.main.listview_history.view.*
 import kotlinx.android.synthetic.main.listview_history.view.textViewDate
 import kotlinx.android.synthetic.main.listview_report.view.*
-import java.text.SimpleDateFormat
 
 class ReportAdapter(val context: Context?, private val items: MutableList<ReportModel>) : RecyclerView.Adapter<ReportAdapter.ViewHolder>() {
 
@@ -22,7 +21,11 @@ class ReportAdapter(val context: Context?, private val items: MutableList<Report
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.listview_report, parent, false)
+            LayoutInflater.from(context).inflate(
+                R.layout.listview_report,
+                parent,
+                false
+            )
         )
     }
 

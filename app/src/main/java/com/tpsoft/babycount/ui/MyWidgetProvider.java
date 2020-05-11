@@ -1,4 +1,4 @@
-package com.tpsoft.babycount;
+package com.tpsoft.babycount.ui;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.tpsoft.babycount.R;
 import com.tpsoft.babycount.data.HistoryDao;
 import com.tpsoft.babycount.data.HistoryModel;
 
@@ -36,7 +37,7 @@ public class MyWidgetProvider extends AppWidgetProvider{
             Intent intent = new Intent(context, MyWidgetProvider.class);
 
 //            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.setAction("com.tpsoft.babycount.MyWidgetProvider");
+            intent.setAction("com.tpsoft.babycount.ui.MyWidgetProvider");
 //            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
 
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
@@ -49,7 +50,7 @@ public class MyWidgetProvider extends AppWidgetProvider{
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if (intent.getAction().equals("com.tpsoft.babycount.MyWidgetProvider")) {
+        if (intent.getAction().equals("com.tpsoft.babycount.ui.MyWidgetProvider")) {
             add(context);
             int countNum = countListAll(context);
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),

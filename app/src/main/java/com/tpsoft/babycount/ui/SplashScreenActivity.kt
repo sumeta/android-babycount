@@ -1,10 +1,10 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Handler
+import com.tpsoft.babycount.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_scrollFlags="scroll|enterAlways|snap"
-    tools:context=".FirstFragment">
+    tools:context=".ui.FirstFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

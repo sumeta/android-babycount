@@ -1,4 +1,4 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tpsoft.babycount.R
 import com.tpsoft.babycount.data.HistoryDao
 import com.tpsoft.babycount.data.HistoryModel
 
 class HistoryFragment : Fragment() {
 
     private var historyList: ArrayList<HistoryModel> = ArrayList()
-    private  var adapter:HistoryAdapter? = null
+    private  var adapter: HistoryAdapter? = null
     private lateinit var recyclerViewPriceTrends:RecyclerView
 
     override fun onCreateView(
@@ -33,7 +34,7 @@ class HistoryFragment : Fragment() {
         recyclerViewPriceTrends = view.findViewById(R.id.recyclerViewCount);
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
         recyclerViewPriceTrends.layoutManager = layoutManager
-        adapter = HistoryAdapter(context,historyList)
+        adapter = HistoryAdapter(context, historyList)
         recyclerViewPriceTrends.adapter = adapter
 
         val dao = HistoryDao(activity)

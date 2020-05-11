@@ -1,10 +1,11 @@
-package com.tpsoft.babycount
+package com.tpsoft.babycount.ui
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tpsoft.babycount.R
 import com.tpsoft.babycount.data.HistoryModel
 import kotlinx.android.synthetic.main.listview_history.view.*
 
@@ -18,7 +19,15 @@ class HistoryAdapter(val context: Context?, private val items: ArrayList<History
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.listview_history, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(
+                context
+            ).inflate(
+                R.layout.listview_history,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
