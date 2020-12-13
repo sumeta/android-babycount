@@ -24,6 +24,7 @@ class SettingFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity?.title  = "Setting"
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         arguments?.let {
